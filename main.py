@@ -23,14 +23,18 @@ class Window(QMainWindow):
 
     # method for widgets
     def UiComponents(self):
+        options = ["Option1", "Option2", "Option3", "Option4", "Option5"]
+        buttonpos_x = 10
+        buttonpos_y = 10
+        buttonsize_x = 200
+        buttonsize_y = 40
+
         # creating a push button
-        button = QPushButton("Pick a movie for me!", self)
-
+        button1 = QPushButton(options[0], self)
         # setting geometry of button
-        button.setGeometry(500, 150, 200, 40)
-
+        button1.setGeometry(buttonpos_x, buttonpos_y, buttonsize_x, buttonsize_y)
         # adding action to a button
-        button.clicked.connect(self.option1)
+        button1.clicked.connect(self.option1)
 
     # action method
     def option1(self):
