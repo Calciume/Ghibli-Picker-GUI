@@ -1,25 +1,48 @@
-from PyQt6.QtCore import QSize, Qt
-from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton
+# importing libraries
+from PyQt6.QtWidgets import *
+from PyQt6.QtGui import *
+from PyQt6.QtCore import *
+import sys
 
-class MainWindow(QMainWindow):
+
+class Window(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Ghibli Picker")
+        # setting title
+        self.setWindowTitle("Python ")
 
-        button = QPushButton("Press Me!")
-        button.setCheckable(True)
-        button.clicked.connect(self.button_clicked)
+        # setting geometry
+        self.setGeometry(0, 0, 600, 400)
 
-        self.setCentralWidget(button)
+        # calling method
+        self.UiComponents()
 
-    def button_clicked(self):
-        print("Clicked!")
+        # showing all the widgets
+        self.show()
+
+    # method for widgets
+    def UiComponents(self):
+        # creating a push button
+        button = QPushButton("Pick a movie for me!", self)
+
+        # setting geometry of button
+        button.setGeometry(500, 150, 200, 40)
+
+        # adding action to a button
+        button.clicked.connect(self.option1)
+
+    # action method
+    def option1(self):
+        # printing pressed
+        print("pressed")
 
 
-app = QApplication([])
+# create pyqt5 app
+App = QApplication(sys.argv)
 
-window = MainWindow()
-window.show()
+# create the instance of our Window
+window = Window()
 
-app.exec()
+# start the app
+sys.exit(App.exec())
