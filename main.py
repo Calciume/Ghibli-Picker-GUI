@@ -1,7 +1,7 @@
 # importing libraries
-from PyQt6.QtWidgets import *
+from PyQt6.QtWidgets import QLabel, QMainWindow, QPushButton, QApplication
 from PyQt6.QtGui import *
-from PyQt6.QtCore import *
+# from PyQt6.QtCore import *
 import sys
 
 
@@ -10,10 +10,10 @@ class Window(QMainWindow):
         super().__init__()
 
         # setting title
-        self.setWindowTitle("Python ")
+        self.setWindowTitle("Ghibli Picker")
 
         # setting geometry
-        self.setGeometry(0, 0, 600, 400)
+        self.setFixedSize(500, 260)
 
         # calling method
         self.UiComponents()
@@ -23,18 +23,26 @@ class Window(QMainWindow):
 
     # method for widgets
     def UiComponents(self):
-        options = ["Option1", "Option2", "Option3", "Option4", "Option5"]
+        options = ["1. Pick a movie for me", "2. Exclude a movie", "3. Save", "4. Load", "5. Exit"]
         buttonpos_x = 10
         buttonpos_y = 10
         buttonsize_x = 200
         buttonsize_y = 40
+        # Displaying the picture
+        label = QLabel(self)
+        label.setPixmap(QPixmap("ghibli.png"))
+        label.show()
+        label.setGeometry(235, 10, 240, 240)
 
-        # creating a push button
-        button1 = QPushButton(options[0], self)
-        # setting geometry of button
-        button1.setGeometry(buttonpos_x, buttonpos_y, buttonsize_x, buttonsize_y)
-        # adding action to a button
-        button1.clicked.connect(self.option1)
+        for i in range(5):
+            # creating a push button
+            button1 = QPushButton(options[i], self)
+            # setting geometry of button
+            button1.setGeometry(buttonpos_x, buttonpos_y, buttonsize_x, buttonsize_y)
+            # Decrease the position of button each loop
+            buttonpos_y += 50
+            # adding action to a button
+            button1.clicked.connect(self.option1)
 
     # action method
     def option1(self):
