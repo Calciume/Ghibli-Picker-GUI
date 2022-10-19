@@ -1,5 +1,5 @@
 # importing libraries
-from PyQt6.QtWidgets import QLabel, QMainWindow, QPushButton, QApplication
+from PyQt6.QtWidgets import QLabel, QMainWindow, QPushButton, QApplication, QMenuBar, QGridLayout, QMenu
 from PyQt6.QtGui import *
 # from PyQt6.QtCore import *
 import sys
@@ -8,32 +8,43 @@ import sys
 class Window(QMainWindow):
     def __init__(self):
         super().__init__()
-
         # setting title
         self.setWindowTitle("Ghibli Picker")
-
         # setting geometry
-        self.setFixedSize(500, 260)
-
+        self.setFixedSize(500, 276)
+        # calling menubar
+        self.createmenubar()
         # calling method
         self.UiComponents()
-
         # showing all the widgets
         self.show()
+
+    def createmenubar(self):
+        menuBar = self.menuBar()
+        # Creating menus using QMenu object
+        filemenu = QMenu("&File", self)
+        menuBar.addMenu(filemenu)
+
+        helpmenu = QMenu("&Help", self)
+        menuBar.addMenu(helpmenu)
+        # Creating menus with a title
+
 
     # method for widgets
     def UiComponents(self):
         options = ["1. Pick a movie for me", "2. Exclude a movie", "3. Save", "4. Load", "5. Exit"]
         buttonpos_x = 10
-        buttonpos_y = 10
+        buttonpos_y = 26
         buttonsize_x = 200
         buttonsize_y = 40
+
         # Displaying the picture
         label = QLabel(self)
         label.setPixmap(QPixmap("ghibli.png"))
         label.show()
-        label.setGeometry(235, 10, 240, 240)
+        label.setGeometry(235, 26, 240, 240)
 
+        # Loop to add the button row
         for i in range(5):
             # creating a push button
             button1 = QPushButton(options[i], self)
