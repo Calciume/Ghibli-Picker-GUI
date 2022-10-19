@@ -12,6 +12,8 @@ class Window(QMainWindow):
         self.setWindowTitle("Ghibli Picker")
         # setting geometry
         self.setFixedSize(500, 276)
+        # calling actions for menubar
+        self.menubaractions()
         # calling menubar
         self.createmenubar()
         # calling method
@@ -19,14 +21,22 @@ class Window(QMainWindow):
         # showing all the widgets
         self.show()
 
+    def menubaractions(self):
+        # Create action with first constructor
+        self.newAction = QAction(self)
+        # Create action with second constructor
+        self.aboutAction = QAction("&About", self)
+
     def createmenubar(self):
         menuBar = self.menuBar()
-        # Creating menus using QMenu object
+        # File Menu
         filemenu = QMenu("&File", self)
         menuBar.addMenu(filemenu)
 
+        # Help Menu
         helpmenu = QMenu("&Help", self)
         menuBar.addMenu(helpmenu)
+        helpmenu.addAction(self.aboutAction)
         # Creating menus with a title
 
 
