@@ -17,14 +17,20 @@ class Window(QMainWindow):
         # calling menubar
         self.createmenubar()
         # calling method
-        self.UiComponents()
+        self.main_menu()
         # showing all the widgets
         self.show()
 
     def menubaractions(self):
         # Create action with first constructor
         self.newAction = QAction(self)
-        # Create action with second constructor
+        # File menu actions
+        self.openAction = QAction("&Open", self)
+        self.saveAction = QAction("&Save", self)
+        self.loadAction = QAction("&Load", self)
+        self.exitAction = QAction("&Exit", self)
+
+        # About menu actions
         self.aboutAction = QAction("&About", self)
 
     def createmenubar(self):
@@ -32,16 +38,18 @@ class Window(QMainWindow):
         # File Menu
         filemenu = QMenu("&File", self)
         menuBar.addMenu(filemenu)
-
+        filemenu.addAction(self.openAction)
+        filemenu.addAction(self.saveAction)
+        filemenu.addAction(self.loadAction)
+        filemenu.addAction(self.exitAction)
         # Help Menu
         helpmenu = QMenu("&Help", self)
         menuBar.addMenu(helpmenu)
         helpmenu.addAction(self.aboutAction)
         # Creating menus with a title
 
-
     # method for widgets
-    def UiComponents(self):
+    def main_menu(self):
         options = ["1. Pick a movie for me", "2. Exclude a movie", "3. Save", "4. Load", "5. Exit"]
         buttonpos_x = 10
         buttonpos_y = 26
