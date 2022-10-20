@@ -34,17 +34,17 @@ class Window(QMainWindow):
         self.aboutAction = QAction("&About", self)
 
     def createmenubar(self):
-        menuBar = self.menuBar()
+        menubar = self.menuBar()
         # File Menu
         filemenu = QMenu("&File", self)
-        menuBar.addMenu(filemenu)
+        menubar.addMenu(filemenu)
         filemenu.addAction(self.openAction)
         filemenu.addAction(self.saveAction)
         filemenu.addAction(self.loadAction)
         filemenu.addAction(self.exitAction)
         # Help Menu
         helpmenu = QMenu("&Help", self)
-        menuBar.addMenu(helpmenu)
+        menubar.addMenu(helpmenu)
         helpmenu.addAction(self.aboutAction)
         # Creating menus with a title
 
@@ -62,22 +62,47 @@ class Window(QMainWindow):
         label.show()
         label.setGeometry(235, 26, 240, 240)
 
-        # Loop to add the button row
-        for i in range(5):
-            # creating a push button
-            button1 = QPushButton(options[i], self)
-            # setting geometry of button
-            button1.setGeometry(buttonpos_x, buttonpos_y, buttonsize_x, buttonsize_y)
-            # Decrease the position of button each loop
-            buttonpos_y += 50
-            # adding action to a button
-            button1.clicked.connect(self.option1)
+        # Defining each button
+        button0 = QPushButton(options[0], self)
+        button1 = QPushButton(options[1], self)
+        button2 = QPushButton(options[2], self)
+        button3 = QPushButton(options[3], self)
+        button4 = QPushButton(options[4], self)
+
+        # Set the geometry of each button
+        button0.setGeometry(buttonpos_x, buttonpos_y, buttonsize_x, buttonsize_y)
+        buttonpos_y += 50
+        button1.setGeometry(buttonpos_x, buttonpos_y, buttonsize_x, buttonsize_y)
+        buttonpos_y += 50
+        button2.setGeometry(buttonpos_x, buttonpos_y, buttonsize_x, buttonsize_y)
+        buttonpos_y += 50
+        button3.setGeometry(buttonpos_x, buttonpos_y, buttonsize_x, buttonsize_y)
+        buttonpos_y += 50
+        button4.setGeometry(buttonpos_x, buttonpos_y, buttonsize_x, buttonsize_y)
+
+        # Set each click action
+        button0.clicked.connect(self.option0)
+        button1.clicked.connect(self.option1)
+        button2.clicked.connect(self.option2)
+        button3.clicked.connect(self.option3)
+        button4.clicked.connect(self.option4)
 
     # action method
-    def option1(self):
+    def option0(self):
         # printing pressed
         print("pressed")
 
+    def option1(self):
+        pass
+
+    def option2(self):
+        pass
+
+    def option3(self):
+        pass
+
+    def option4(self):
+        pass
 
 # create pyqt5 app
 App = QApplication(sys.argv)
